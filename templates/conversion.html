@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+      <div class="row mx-auto d-block">
+            <form action="/conversionexitosa/" method="POST">
+                  <input class="text-dark col-12" placeholder="Pega aquí tu secuencia de NCBI" style="height: 10vh;" type="text" name="secuenciancbi">
+                  <input class="btn-primary col-12" type="submit" value="Convertir" style="height: 10vh;">
+            </form>
+      </div>
+      <br>
+      <div class="row">
+            <p>Selecciona de la web NCBI la secuencia que desees analizar y cópiala. Despúes, pégala en el cuadro de texto que hay en la parte superior de esta página y clica en "Convertir".</p>
+             <p>El resultado será la secuencia con el formato adecuado para proceder a su análisis.</p>
+            <img class="img-fluid" src="../static/img/ncbi.png" alt="">
+      </div>
+</div>
+
+{% endblock %}

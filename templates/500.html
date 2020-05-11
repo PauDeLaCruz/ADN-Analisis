@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="mt-3" style="height: 90vh;">
+    <h5>Recuerda que los únicos carácteres válidos en una secuencia de ADN son:</h5>
+    <h2 class="text-center text-primary">a, t, c, g</h2>
+    <br><br>
+    <p class="text-secondary">(En caso de que introduzcas una secuencia no válida la web te redirigirá a esta página)</p>
+    <br><br>
+    <form action="/">
+        <input class="btn-primary col-12" type="submit" value="Volver a Inicio" style="height: 10vh;"/>
+    </form>
+</div>
+
+
+{% endblock %}

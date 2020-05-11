@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="datossecuencia mt-3 ">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h3 class="text-primary">Secuencia</h3>
+            <textarea class="form-control form-rounded" rows="5">
+                {{ info[1] }}
+            </textarea>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h5 >Longitud: {{ info[3] }}</h5>
+        </div>
+    </div>
+
+    <br><br>
+
+
+    <div class="row justify-content-center mx-auto">
+        <div class="col-12">
+            <canvas id="myChart" width="654" height="300" style="display: block; width: 327px; height: 138px;"></canvas>
+            <script>
+                var ctx = document.getElementById("myChart").getContext('2d');
+                var a =  "{{ nucleotidefrequency[0] }}"
+                var t =  "{{ nucleotidefrequency[1] }}"
+                var c =  "{{ nucleotidefrequency[2] }}"
+                var g =  "{{ nucleotidefrequency[3] }}"
+
+                var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ["Adenina", "Timina", "Citosina", "Guanina"],
+                            datasets: [{
+                                    data: [a,t,c,g],
+                                    backgroundColor: [
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 255, 0, 0.2)',
+                                        'rgba(0, 100, 0, 0.2)',
+                                        'rgba(255, 0, 0, 0.2)',
+                                    ],
+                                    borderColor: [
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 255, 0, 1)',
+                                        'rgba(0, 100, 100, 1)',
+                                        'rgba(255, 0, 0, 1)'
+                                    ],
+                                    borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            tooltips: {
+                                callbacks: {
+                                label: function(tooltipItem) {
+                                        return tooltipItem.yLabel;
+                                }
+                                }
+                            },
+                            scales: {
+                                    yAxes: [{
+                                        display: false,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: Math.max(a,t,c,g) + 100
+                                                }
+                                    }],
+                            },
+                            legend: {
+
+                                    display:false
+
+                            },
+                            title: {
+                                display: true,
+                                text: 'Unidades de cada nucleótido en la secuencia',
+                                fontSize: 20
+                            }
+                        }
+                });
+            </script>
+        </div>
+        <p ><small class="text-secondary">(Si estás desde un móvil, pulsa encima de los gráficos para ver las unidades)</small></p>
+    </div>
+    <br><br>
+    <div class="row justify-content-center mx-auto">
+        <div class="col-12">
+            <canvas id="pie-chart" width="654" height="350" style="display: block; width: 327px; height: 238px;"></canvas>
+            <script>
+                var gc = "{{ gccontent }}"
+                var total = 100
+                var resto = total-gc
+                new Chart(document.getElementById("pie-chart"), {
+                    type: 'pie',
+                    data: {
+                        labels: ["GC %"],
+                        datasets: [{
+                            label: "%",
+                            backgroundColor: ["orange", "grey"],
+                            data: [gc,resto]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Porcentaje GC',
+                            fontSize: 20
+                        },
+                        legend: {
+                            labels: {
+                            fontSize: 20,
+                            fontColor: 'white'
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <p class="mt-3"><small class="text-secondary">(Desde móvil, pulsa encima del color naranja para ver el porcentaje)</small></p>
+    </div>
+    <br><br><br><br>
+
+
+    <div class="col-12 card">
+        <div class="card-body mx-auto d-block col-12">
+            <h5 class="text-primary text-center card-title">Traducción de la secuencia ADN introducida a una secuencia de aminoácidos</h5>
+            <textarea class="form-control form-rounded" rows="5">
+                {{ translateseq }}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <img class="img-fluid mx-auto d-block" src="../static/img/aminoacidos.png" alt="">
+    </div>
+
+    <br><br><br><br>
+
+    <div class="col-12 card">
+        <div class="card-body mx-auto d-block col-12">
+            <h5 class="text-primary text-center card-title">Transcripción de la secuencia ADN a ARN</h5>
+            <textarea class="form-control form-rounded" rows="5">
+                {{ transcription }}
+            </textarea>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="col-12 card">
+        <div class="card-body mx-auto d-block col-12">
+            <h5 class="text-primary text-center card-title">Complemento inverso</h5>
+            <textarea class="form-control form-rounded" rows="5">
+                {{ reversecomplement }}
+            </textarea>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="col-12 card">
+        <div class="card-body mx-auto d-block">
+            <h5 class="text-primary text-center card-title">Frecuencia de los codones que forman un aminoácido presentes en esta secuencia</h5>
+            <p class="text-dark card-text">
+                {{ codonusage }}
+            </p>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="row justify-content-center mx-auto">
+            <form action="/descarga" method="POST" >
+                <input type="hidden" name="secusuario" value="{{ info [1] }}">
+                <input class="btn-primary mx-auto"  style="width: 80vw; height: 10vw; font-size: 20px;" type="submit" value="Análisis completo en formato TEXTO"></input>
+            </form>
+    </div>
+
+    <br><br><br><br>
+
+</div>
+
+{% endblock %}

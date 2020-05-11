@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3" style="height: 80vh;">
+      <div class="row mx-auto d-block">
+            <form action="/secuenciagenerada/" method="POST">
+                  <input class ="text-dark col-12"  placeholder="Introduce la longitud de la secuencia" style="height: 10vh;" type="text" name="valorusuario">
+                  <input class ="btn-primary col-12" type="submit" style="height: 10vh;" value="Generar secuencia">
+            </form>
+      </div>
+</div>
+
+{% endblock %}

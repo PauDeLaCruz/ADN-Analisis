@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="mt-5">
+    <div class="row justify-content-center">
+        <button class="btn-primary" style="height: 10vh;" onclick="myFunction()">Copiar secuencia</button>
+    </div>
+</div>
+
+<div class="mt-5"> 
+    <textarea id="myInput" class="form-control form-rounded" rows="20">
+        {{ secuenciancbi }}
+    </textarea>
+</div>
+
+<script>
+    function myFunction() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Secuencia copiada con éxito");
+    }
+</script>
+
+
+{% endblock %}

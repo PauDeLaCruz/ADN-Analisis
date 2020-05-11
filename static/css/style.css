@@ -1,0 +1,17 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+}
+
+.carousel-item img{
+    
+    height: 90vh;
+    
+}
+
+@media (max-width: 991.98px) { 
+    .carousel-item img{
+        height: 50vh;
+    }
+}

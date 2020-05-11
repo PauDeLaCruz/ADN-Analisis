@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+            <div class="d-none d-md-block">
+                <a href="/analizar"><img class="d-block w-100" src="../static/img/analizar.png" alt="First slide"></a>
+            </div>
+            <div class="d-md-none">
+                <a href="/analizar"><img class="d-block w-100" src="../static/img/analizarmv.png" alt="First slide"></a>
+            </div>
+        <div class="carousel-caption d-none d-md-block">
+            <h2>Analiza secuencias de ADN</h2>
+            <p>Obtén información de una manera gráfica y realmente útil para un bioinformático</p>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-none d-md-block">
+            <a href="/conversion"><img class="d-block w-100" src="../static/img/convertir.png" alt="Second slide"></a>
+        </div>
+        <div class="d-md-none">
+            <a href="/conversion"><img class="d-block w-100" src="../static/img/convertirmv.png" alt="Second slide"></a>
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+            <h2>Compatibilidad gracias a mi script </h2>
+            <p>Convierte una secuencia de nucleótidos de NCBI a un formato adecuado para analizarla, en un abrir y cerrar de ojos</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-none d-md-block">
+            <a href="/generar"><img class="d-block w-100" src="../static/img/generar.png" alt="Third slide"></a>
+        </div>
+        <div class="d-md-none">
+            <a href="/generar"><img class="d-block w-100" src="../static/img/generarmv.png" alt="Third slide"></a>
+        </div>
+        
+        <div class="carousel-caption d-none d-md-block">
+            <h2>Genera tus secuencias aleatórias</h2>
+            <p>Determina la longitud que tendrá tu secuencia y la web hará el resto</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="col-10 mt-2 d-md-none">
+        <p>Bienvenido/a a ADN - Pau De la Cruz. Esta web te permitirá:</p>
+        <p>- Analizar secuencias de ADN.</p>
+        <p>- Convertir una secuencia de nucleótidos de NCBI a un formato adecuado para analizarla, en un abrir y cerrar de ojos.</p>
+        <p>- Generar secuencias aletorias </p>
+  </div>
+
+{% endblock %}

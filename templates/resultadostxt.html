@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <h3 class="text-primary">Información de la secuencia</h3>
+    <textarea class="form-control form-rounded" rows="5">
+        {{ info[1] }}
+    </textarea>
+    Tipo: {{ info[2] }} <br>
+    Longitud: {{ info[3] }} <br>
+    <br><br>
+    <h3 class="text-primary">Frecuencia de los nucleótidos</h3>
+        Adenina: {{ nucleotidefrequency[0] }} <br>
+        Timina: {{ nucleotidefrequency[1] }} <br>
+        Citosina: {{ nucleotidefrequency[2] }} <br>
+        Guanina: {{ nucleotidefrequency[3] }}
+    <br><br>
+    <h3 class="text-primary">Transcripción</h3>
+    <textarea class="form-control form-rounded" rows="5">
+        {{ transcription }}
+    </textarea>
+    <br><br>
+    <h3 class="text-primary">Complemento inverso</h3>
+    <textarea class="form-control form-rounded" rows="5">
+        {{ reversecomplement }}
+    </textarea>
+    <br><br>
+    <h3 class="text-primary">GC Content</h3>
+    {{ gccontent }}
+    <br><br>
+    <h3 class="text-primary">Traducción de la secuencia ADN a una secuencia de aminoácidos</h3>
+    <textarea class="form-control form-rounded" rows="5">
+        {{ translateseq }}
+    </textarea>
+    <br><br>
+    <h3 class="text-primary">Frecuencia de los codones que forman un aminoácido</h3>
+    {{ codonusage }}
+    <br><br>
+</div>
+
+{% endblock %}
