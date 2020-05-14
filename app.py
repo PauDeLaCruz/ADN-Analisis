@@ -47,8 +47,9 @@ def analizar():
 def resultados():
     if request.method == 'POST':
         secuenciausuario = request.form['secuenciausuario']
-        secuenciausuario = secuenciausuario.strip()
-        test_dna = bio_seq(secuenciausuario)
+        secuenciausuariostrip = secuenciausuario.strip()
+        secuenciadefinitiva = secuenciausuariostrip.replace(" ", "")
+        test_dna = bio_seq(secuenciadefinitiva)
         info = test_dna.get_seq_info_array()
         nucleotidefrequency = test_dna.nucleotide_frequency()
         transcription = test_dna.transcription()
